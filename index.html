@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUNE - Premium Lifestyle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Staatliches&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #d4a574;
+            --bg: #f8f6f3;
+            --text: #2d2d2d;
+            --light: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(248, 246, 243, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(212, 165, 116, 0.2);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            font-family: 'Staatliches', cursive;
+            font-size: 2rem;
+            letter-spacing: 4px;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .nav-icons span {
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .nav-icons span:hover {
+            transform: scale(1.15);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            height: 90vh;
+            background: linear-gradient(135deg, #f8f6f3 0%, #e8e4df 100%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+            animation: fadeInLeft 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-family: 'Staatliches', cursive;
+            font-size: 5rem;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            letter-spacing: 2px;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            color: var(--text);
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--primary);
+            color: var(--light);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            border: 2px solid var(--primary);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:hover {
+            border-color: var(--accent);
+        }
+
+        .hero-image {
+            width: 500px;
+            height: 600px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600"><rect fill="%23d4a574" width="500" height="600"/><path fill="%231a1a1a" opacity="0.1" d="M0,300 Q250,200 500,300 L500,600 L0,600 Z"/></svg>');
+            background-size: cover;
+            box-shadow: 20px 20px 60px var(--shadow);
+            animation: fadeInRight 1s ease-out 0.5s both;
+            position: relative;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Collection Section */
+        .collections {
+            padding: 8rem 4rem;
+            background: var(--light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-header h2 {
+            font-family: 'Staatliches', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text);
+            opacity: 0.8;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .product-card {
+            background: var(--bg);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .product-card:nth-child(2) { animation-delay: 0.1s; }
+        .product-card:nth-child(3) { animation-delay: 0.2s; }
+        .product-card:nth-child(4) { animation-delay: 0.3s; }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #d4a574 0%, #b88c5d 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.2), transparent);
+        }
+
+        .product-info {
+            padding: 2rem;
+        }
+
+        .product-info h3 {
+            font-family: 'Staatliches', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .product-info p {
+            color: var(--text);
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        /* Features */
+        .features {
+            padding: 6rem 4rem;
+            background: var(--primary);
+            color: var(--light);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem;
+        }
+
+        .feature {
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .feature:nth-child(2) { animation-delay: 0.1s; }
+        .feature:nth-child(3) { animation-delay: 0.2s; }
+        .feature:nth-child(4) { animation-delay: 0.3s; }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .feature h3 {
+            font-family: 'Staatliches', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg);
+            padding: 4rem 4rem 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Staatliches', cursive;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: var(--text);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem;
+                height: auto;
+                padding-top: 4rem;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-image {
+                width: 100%;
+                max-width: 400px;
+                height: 500px;
+                margin-top: 3rem;
+            }
+
+            .collections {
+                padding: 4rem 2rem;
+            }
+
+            .features {
+                padding: 4rem 2rem;
+            }
+
+            footer {
+                padding: 3rem 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">LUNE</div>
+        <ul class="nav-links">
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#collections">Collections</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-icons">
+            <span>🔍</span>
+            <span>❤️</span>
+            <span>🛒</span>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Elevate Your Space</h1>
+            <p>Discover curated collections of premium lifestyle essentials designed for the modern connoisseur.</p>
+            <a href="#shop" class="cta-button">Explore Collection</a>
+        </div>
+        <div class="hero-image"></div>
+    </section>
+
+    <section class="collections" id="collections">
+        <div class="section-header">
+            <h2>Featured Collection</h2>
+            <p>Handpicked pieces that define contemporary luxury</p>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image"></div>
+                <div class="product-info">
+                    <h3>Minimalist Timepiece</h3>
+                    <p>Precision crafted movement</p>
+                    <div class="product-price">$499</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image"></div>
+                <div class="product-info">
+                    <h3>Leather Portfolio</h3>
+                    <p>Italian full-grain leather</p>
+                    <div class="product-price">$349</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image"></div>
+                <div class="product-info">
+                    <h3>Ceramic Collection</h3>
+                    <p>Handmade artisan pottery</p>
+                    <div class="product-price">$189</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image"></div>
+                <div class="product-info">
+                    <h3>Wool Throw</h3>
+                    <p>Merino wool blend</p>
+                    <div class="product-price">$279</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature">
+            <div class="feature-icon">✈️</div>
+            <h3>Free Shipping</h3>
+            <p>Complimentary shipping on orders over $200</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🔄</div>
+            <h3>Easy Returns</h3>
+            <p>30-day hassle-free return policy</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🎁</div>
+            <h3>Gift Wrapping</h3>
+            <p>Elegant packaging for every order</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🏆</div>
+            <h3>Premium Quality</h3>
+            <p>Curated selection of finest materials</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                    <li><a href="#">Collections</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Craftsmanship</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 LUNE. Premium lifestyle essentials.</p>
+        </div>
+    </footer>
+</body>
+</html>
